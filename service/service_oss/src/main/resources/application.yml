@@ -1,0 +1,32 @@
+server:
+  port: 8120 # 服务端口
+
+spring:
+  profiles:
+    active: dev # 环境设置
+  application:
+    name: service-oss # 服务名
+  cloud:
+    nacos:
+      discovery:
+        server-addr: xxxxxxx:8848
+    sentinel:
+      transport:
+        port: 8888
+        dashboard: xxxxxxx:8858
+aliyun:
+  oss:
+    endpoint: xxxxx
+    keyid: xxxxx
+    keysecret: xxxxx
+    #bucket可以在控制台创建，也可以使用java代码创建，注意先测试bucket是否已被占用
+    bucketname: xxxxx
+logging:
+  level:
+    root: info
+ribbon:
+  MaxAutoRetries: 0 # 同一实例最大重试次数，不包括首次调用，默认0
+  MaxAutoRetriesNextServer: 1 # 重试其他实例的最大重试次数，不包括首次所选的server，默认1
+feign:
+  httpclient:
+    connection-timeout: 3000
